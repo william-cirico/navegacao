@@ -4,7 +4,10 @@ import HomeScreen from "../screens/HomeScreen";
 
 export type StackParamList = {
     HomeScreen: undefined;
-    DetailsScreen: undefined;
+    DetailsScreen: {
+        id: number;
+        description: string;
+    };
 }
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -12,7 +15,7 @@ const Stack = createNativeStackNavigator<StackParamList>();
 export function StackNavigationRoutes() {
     return (
         <Stack.Navigator
-            initialRouteName="DetailsScreen"
+            initialRouteName="HomeScreen"
         >
             <Stack.Screen 
                 name="HomeScreen"
@@ -33,9 +36,7 @@ export function StackNavigationRoutes() {
             </Stack.Screen>
             <Stack.Screen 
                 name="DetailsScreen"
-                options={{ 
-                    title: "Detalhes do Produto"
-                }}
+                options={({ route }) => ({ title: route.params.description })}
             >
                 {(props) => <DetailsScreen {...props} />}
             </Stack.Screen>

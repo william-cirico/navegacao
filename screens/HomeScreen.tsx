@@ -8,7 +8,14 @@ export default function HomeScreen({ navigation }: Props) {
     return (
         <View>
             <Text>Home Page 🏠</Text>
-            <Button title="Ir para a página de detalhes do produto" onPress={() => navigation.navigate("DetailsScreen")} />
+            <Button title="Produto 01" onPress={() => navigation.navigate("DetailsScreen", {
+                id: 1,
+                description: "Mouse Gamer"
+            })} />
+            <Button title="Produto 02" onPress={() => navigation.navigate("DetailsScreen", {
+                id: 2,
+                description: "Teclado Gamer"
+            })} />
         </View>
     );
 }

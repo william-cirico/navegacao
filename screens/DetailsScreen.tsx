@@ -5,15 +5,21 @@ import { StackParamList } from "../routes/StackNavigationRoutes";
 
 type Props = NativeStackScreenProps<StackParamList, "DetailsScreen">;
 
-export default function DetailsScreen({ navigation }: Props) {
+export default function DetailsScreen({ navigation, route }: Props) {
+    const { id, description } = route.params;
+
     return (
         <View>
             <Text>Tela de Detalhes do Produto</Text>
-            <Text>Id do Produto: 1</Text>
-            <Text>Descrição: Mouse Gamer</Text>
+            <Text>Id do Produto: {id}</Text>
+            <Text>Descrição: {description}</Text>
             <Button 
                 title="Voltar para a tela inicial" 
                 onPress={() => navigation.navigate("HomeScreen")} 
+            />
+            <Button 
+                title="Mudar o título" 
+                onPress={() => navigation.setOptions({ title: description })}
             />
         </View>
     );
